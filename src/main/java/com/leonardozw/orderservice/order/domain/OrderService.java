@@ -1,7 +1,6 @@
 package com.leonardozw.orderservice.order.domain;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import com.leonardozw.orderservice.book.Book;
 import com.leonardozw.orderservice.book.BookClient;
@@ -27,9 +26,7 @@ public class OrderService {
     public Mono<Order> submitOrder(String isbn, int quantity){
 		return bookClient.getBookByIsbn(isbn)
             .map(book -> buildAcceptedOrder(book, quantity))
-            .onErrorResume(WebClientResponseException.NotFound.class, ex -> {
-                return Mono.just(buildRejectedOrder(isbn, quantity));
-            })
+            .defaultIfEmpty(buildRejectedOrder(isbn, quantity))
             .flatMap(orderRepository::save);
     }
 
