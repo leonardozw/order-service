@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
 
 @JsonTest
-public class OrderRequestJsonTest {
+public class OrderRequestJsonTests {
     
     @Autowired
     private JacksonTester<OrderRequest> json;

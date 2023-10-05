@@ -13,7 +13,7 @@ import com.leonardozw.orderservice.order.domain.Order;
 import com.leonardozw.orderservice.order.domain.OrderStatus;
 
 @JsonTest
-public class OrderJsonTest {
+public class OrderJsonTests {
     
     @Autowired
     private JacksonTester<Order> json;
