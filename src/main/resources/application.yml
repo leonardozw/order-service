@@ -44,6 +44,11 @@ spring:
                     group: ${spring.application.name}
                 acceptOrder-out-0:
                     destination: order-accepted
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    issuer-uri: http://localhost:8080/realms/PolarBookshop
     rabbitmq:
         host: localhost
         port: 5672

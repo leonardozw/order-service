@@ -18,7 +18,9 @@ import reactor.test.StepVerifier;
 
 @TestMethodOrder(MethodOrderer.Random.class)
 class BookClientTests {
+
     private MockWebServer mockWebServer;
+    
     private BookClient bookClient;
 
     @BeforeEach
