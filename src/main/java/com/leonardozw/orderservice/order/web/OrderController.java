@@ -1,5 +1,7 @@
 package com.leonardozw.orderservice.order.web;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +26,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public Flux<Order> getALLOrders(){
-        return orderService.getALLOrders();
+    public Flux<Order> getALLOrders(@AuthenticationPrincipal Jwt jwt){
+        return orderService.getALLOrders(jwt.getSubject());
     }
 
     @PostMapping
