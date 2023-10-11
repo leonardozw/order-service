@@ -62,6 +62,10 @@ dependencyManagement {
 	}
 }
 
+springBoot {
+	buildInfo()
+}
+
 tasks.named('bootBuildImage'){
 	imageName = "${project.name}"
 	environment["BP_JVM_VERSION"] = "17"
